@@ -1,5 +1,6 @@
 from PySide6 import QtGui, QtWidgets
-from PySide6.QtCore import (Property, QPoint, QPropertyAnimation, QRect,
+from PySide6 import QtCore
+from PySide6.QtCore import (QPoint, QPropertyAnimation, QRect,
                             QSequentialAnimationGroup, QSize, Qt, Signal)
 
 import resources_rc
@@ -9,12 +10,19 @@ import resources_rc
 class SmileRating(QtWidgets.QWidget):
     myMsnChanged = Signal(str)
     # The constructor must receive "myMsn", that is, the message after rating
+
     def __init__(self, myMsn):
         super().__init__()
+
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Maximum,
+            QtWidgets.QSizePolicy.Maximum,
+        )
+
         self.myMsn_ = myMsn
         self.value = 0
         self.end = False
-       
+
         layout = QtWidgets.QHBoxLayout()
 
         self.smileVeryBad = QtWidgets.QLabel()
@@ -74,112 +82,112 @@ class SmileRating(QtWidgets.QWidget):
         self.colorList = ["green", "lime", "yellow", "orange", "red"]
         self.setLayout(layout)
 
-        self.smileVeryBad.enterEvent = lambda event: setValue(1)
-        self.smileBad.enterEvent = lambda event: setValue(2)
-        self.smileRegular.enterEvent = lambda event: setValue(3)
-        self.smileGood.enterEvent = lambda event: setValue(4)
-        self.smileVeryGood.enterEvent = lambda event: setValue(5)
-        self.smileVeryBad.leaveEvent = lambda event: setValue(0)
+        self.smileVeryBad.enterEvent = lambda event: self.setValue(1)
+        self.smileBad.enterEvent = lambda event: self.setValue(2)
+        self.smileRegular.enterEvent = lambda event: self.setValue(3)
+        self.smileGood.enterEvent = lambda event: self.setValue(4)
+        self.smileVeryGood.enterEvent = lambda event: self.setValue(5)
+        self.smileVeryBad.leaveEvent = lambda event: self.setValue(0)
 
-        self.smileVeryBad.mousePressEvent = lambda event: valueConfirm(1)
-        self.smileBad.mousePressEvent = lambda event: valueConfirm(2)
-        self.smileRegular.mousePressEvent = lambda event: valueConfirm(3)
-        self.smileGood.mousePressEvent = lambda event: valueConfirm(4)
-        self.smileVeryGood.mousePressEvent = lambda event: valueConfirm(5)
+        self.smileVeryBad.mousePressEvent = lambda event: self.valueConfirm(1)
+        self.smileBad.mousePressEvent = lambda event: self.valueConfirm(2)
+        self.smileRegular.mousePressEvent = lambda event: self.valueConfirm(3)
+        self.smileGood.mousePressEvent = lambda event: self.valueConfirm(4)
+        self.smileVeryGood.mousePressEvent = lambda event: self.valueConfirm(5)
+   
+        
 
-        # The setValue function establishes with the value parameter the smiles to be displayed.
-        def setValue(value: int):
-            if(self.end == False):
-                if(value == 0):
-                    self.smileVeryBad.setStyleSheet(
-                        u"\n""QLabel\n""{ \n""border-radius:30%;\n""background: transparent;\n""}")
-                if(value == 1):
-                    transparentAllAbove(self.smileVeryBad)
-                if(value == 2):
-                    transparentAllAbove(self.smileBad)
-                if(value == 3):
-                    transparentAllAbove(self.smileRegular)
-                if(value == 4):
-                    transparentAllAbove(self.smileGood)
-                if(value == 5):
-                    transparentAllAbove(self.smileVeryGood)
-            self.update()
+    # The setValue function establishes with the value parameter the smiles to be displayed.
 
-        # The hideAllExcept function hides the smile except the one passed by parameter
-        # sets the color and makes your content scalable.
-        def hideAllExcept(aLabel: QtWidgets.QLabel):
-
-            for element in self.listLabel:
-                if(element != aLabel):
-                    element.setHidden(True)
-                else:
-                    element.setStyleSheet(
-                        u"\n""QLabel\n""{ \n""border-radius:30%;\n""background:" + self.colorList[self.listLabel.index(element)]+";\n""}")
-                    self.child = element
-                    self.child.setScaledContents(True)
-            self.update()
-
-        # The transparentAllAbove function makes the background of the smile translucent
-        # except for the minor ones to the past by parameter to these it establishes the background color.
-        def transparentAllAbove(aLabel: QtWidgets.QLabel):
-            for element in self.listLabel:
-                if(self.listLabel.index(element) < self.listLabel.index(aLabel)):
-                    element.setStyleSheet(
-                        u"\n""QLabel\n""{ \n""border-radius:30%;\n""background: transparent ;\n""}")
-                else:
-                    element.setStyleSheet(
-                        u"\n""QLabel\n""{ \n""border-radius:30%;\n""background:" + self.colorList[self.listLabel.index(element)]+";\n""}")
-            self.update()
-        # The setEnd function establishes that it is the end of the animation and with a label as a parameter
-        # that sets fixed the value of its height and width and inserts the message to the text
-
-        def setEnd(aLabel: QtWidgets.QLabel):
-            if(self.end == False):
-                aLabel.setFixedHeight(80)
-                aLabel.setFixedWidth(80)
-                self.msn.setText(self.myMsn_)
-                self.end = True
-            else:
-                self.end = False
-            self.update()
-        # The valueConfirm function sets the smile to show to animate and hides the rest of the smile
-        def valueConfirm(value: int):
+    def setValue(self, value: int):
+        if(self.end == False):
+            if(value == 0):
+                self.smileVeryBad.setStyleSheet(
+                    u"\n""QLabel\n""{ \n""border-radius:30%;\n""background: transparent;\n""}")
             if(value == 1):
-                hideAllExcept(self.smileVeryBad)
+                self.transparentAllAbove(self.smileVeryBad)
             if(value == 2):
-                hideAllExcept(self.smileBad)
+                self.transparentAllAbove(self.smileBad)
             if(value == 3):
-                hideAllExcept(self.smileRegular)
+                self.transparentAllAbove(self.smileRegular)
             if(value == 4):
-                hideAllExcept(self.smileGood)
+                self.transparentAllAbove(self.smileGood)
             if(value == 5):
-                hideAllExcept(self.smileVeryGood)
-            animationStart()
+                self.transparentAllAbove(self.smileVeryGood)
+    def sizeHint(self):
+        return QtCore.QSize(350, 74)
+    # The hideAllExcept function hides the smile except the one passed by parameter
+    # sets the color and makes your content scalable.
+    def hideAllExcept(self, aLabel: QtWidgets.QLabel):
+        for element in self.listLabel:
+            if(element != aLabel):
+                element.setHidden(True)
+            else:
+                element.setStyleSheet(
+                    u"\n""QLabel\n""{ \n""border-radius:30%;\n""background:" + self.colorList[self.listLabel.index(element)]+";\n""}")
+                self.child = element
+                self.child.setScaledContents(True)
 
-        # The animationStart function starts the SmileRating animations
-        def animationStart():
-            self.child.resize(0, 0)
-            self.animSmilePosition = QPropertyAnimation(self.child, b"pos")
-            self.animMsnPosition = QPropertyAnimation(self.msn, b"pos")
-            self.animSmileSize = QPropertyAnimation(self.child, b"size")
+    # The transparentAllAbove function makes the background of the smile translucent
+    # except for the minor ones to the past by parameter to these it establishes the background color.
 
-            self.animSmilePosition.setEndValue(QPoint(150, 1))
-            self.animMsnPosition.setEndValue(QPoint(160, 10))
-            self.animSmileSize.setEndValue(QSize(80, 80))
+    def transparentAllAbove(self, aLabel: QtWidgets.QLabel):
+        for element in self.listLabel:
+            if(self.listLabel.index(element) < self.listLabel.index(aLabel)):
+                element.setStyleSheet(
+                    u"\n""QLabel\n""{ \n""border-radius:30%;\n""background: transparent ;\n""}")
+            else:
+                element.setStyleSheet(
+                    u"\n""QLabel\n""{ \n""border-radius:30%;\n""background:" + self.colorList[self.listLabel.index(element)]+";\n""}")
+    # The setEnd function establishes that it is the end of the animation and with a label as a parameter
+    # that sets fixed the value of its height and width and inserts the message to the text
 
-            self.animSmileSize.setDuration(100)
-            self.animSmilePosition.setDuration(500)
-            self.animMsnPosition.setDuration(200)
+    def setEnd(self, aLabel: QtWidgets.QLabel):
+        if(self.end == False):
+            aLabel.setFixedHeight(80)
+            aLabel.setFixedWidth(80)
+            self.msn.setText(self.myMsn_)
+            self.end = True
+    # The valueConfirm function sets the smile to show to animate and hides the rest of the smile
 
-            self.anim_group = QSequentialAnimationGroup()
+    def valueConfirm(self, value: int):
+        if(self.end == False):
+            if(value == 1):
+                self.hideAllExcept(self.smileVeryBad)
+            if(value == 2):
+                self.hideAllExcept(self.smileBad)
+            if(value == 3):
+                self.hideAllExcept(self.smileRegular)
+            if(value == 4):
+                self.hideAllExcept(self.smileGood)
+            if(value == 5):
+                self.hideAllExcept(self.smileVeryGood)
+            self.animationStart()
+    # The animationStart function starts the SmileRating animations
 
-            self.anim_group.addAnimation(self.animSmileSize)
-            self.anim_group.addAnimation(self.animMsnPosition)
-            self.anim_group.addAnimation(self.animSmilePosition)
+    def animationStart(self):
+        self.child.resize(0, 0)
 
-            self.anim_group.start()
-            self.anim_group.finished.connect(setEnd(self.child))
-            self.update()
+        self.animSmilePosition = QPropertyAnimation(self.child, b"pos")
+        self.animMsnPosition = QPropertyAnimation(self.msn, b"pos")
+        self.animSmileSize = QPropertyAnimation(self.child, b"size")
+
+        self.animSmilePosition.setEndValue(QPoint(150, 1))
+        self.animMsnPosition.setEndValue(QPoint(170, 10))
+        self.animSmileSize.setEndValue(QSize(80, 80))
+
+        self.animSmileSize.setDuration(100)
+        self.animSmilePosition.setDuration(500)
+        self.animMsnPosition.setDuration(200)
+
+        self.anim_group = QSequentialAnimationGroup()
+
+        self.anim_group.addAnimation(self.animSmileSize)
+        self.anim_group.addAnimation(self.animMsnPosition)
+        self.anim_group.addAnimation(self.animSmilePosition)
+
+        self.anim_group.start()
+        self.anim_group.finished.connect(self.setEnd(self.child))
 
     @property
     def myMsn(self):

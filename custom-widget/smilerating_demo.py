@@ -2,7 +2,6 @@ import sys
 
 from PySide6.QtWidgets import QApplication, QHBoxLayout, QMainWindow, QWidget
 
-import resources_rc
 from smilerating import SmileRating
 
 
@@ -17,6 +16,7 @@ class MainWindow(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+
 
 app = QApplication(sys.argv)
 w = MainWindow()
