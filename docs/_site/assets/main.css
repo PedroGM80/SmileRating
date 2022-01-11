@@ -131,9 +131,13 @@ table td { border: 1px solid #e8e8e8; }
 .post-link { display: block; font-size: 24px; }
 
 /** Posts */
-.post-header { margin-bottom: 30px; }
-
-.post-title { font-size: 42px; letter-spacing: -1px; line-height: 1; }
+.post-header { margin-bottom: 30px; 
+        background: #eaafc8;
+        background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+        background: linear-gradient(to right, #eaafc8, #654ea3);
+        min-height: 100vh;
+}
+.post-title { font-size: 42px; letter-spacing: -1px; line-height: 1; color:black}
 
 @media screen and (max-width: 800px) { .post-title { font-size: 36px; } }
 
