@@ -22,8 +22,8 @@ title: SmileRating
 email: pedro13087@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   SmileRating is a custom Widget for Qt Designer.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/SmileRating" # the subpath of your site, e.g. /blog
+url: "https://PedroGM80.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  PedroGM80
 # Build settings
