@@ -11,7 +11,11 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight { mar
 main { display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */ }
 
 /** Images */
-img { max-width: 100%; vertical-align: middle; }
+img { max-width: 70%; vertical-align: middle; 
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;}
 
 /** Figures */
 figure > img { display: block; }
@@ -126,16 +130,21 @@ table td { border: 1px solid #e8e8e8; }
 
 .post-list > li { margin-bottom: 30px; }
 
-.post-meta { font-size: 14px; color: #828282; }
+.post-meta { font-size: 14px; color: black; }
 
 .post-link { display: block; font-size: 24px; }
 
 /** Posts */
-.post-header { margin-bottom: 30px; 
-        background: #eaafc8;
-        background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
-        background: linear-gradient(to right, #eaafc8, #654ea3);
-        min-height: 100vh;
+.post-header { 
+    margin-bottom: 30px; 
+    background: linear-gradient(to right, #f1dde2, #d4cbeb);
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    width: max-content;
+    border: black;
+    border-bottom-style: solid;
+    shape-outside: padding-box;
 }
 .post-title { font-size: 42px; letter-spacing: -1px; line-height: 1; color:black}
 
@@ -277,5 +286,9 @@ table td { border: 1px solid #e8e8e8; }
 .highlight .vi { color: #008080; }
 
 .highlight .il { color: #099; }
+
+p{   border:3px solid black;
+   border-radius:22px;
+}
 
 /*# sourceMappingURL=main.css.map */
