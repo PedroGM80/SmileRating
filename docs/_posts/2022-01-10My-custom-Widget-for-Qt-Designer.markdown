@@ -1,6 +1,6 @@
 ---
 layout: SmileRating
-title:  "My custom Widget for Qt Designer."
+title:  "My custom Widget for Qt Designer"
 date:   2022-01-10 09:39:05 +0100
 categories: 
 ---
