@@ -9,4 +9,4 @@ This Widget for Qt Designer provides a graphical interface to collect the degree
 [<img   src="https://pedrogm80.github.io/PedroGM80/images/portfolio/droplet.jpg">](https://pedrogm80.github.io/PedroGM80/#portfolio )
 
 This is the repository 
-[<img src="https://github.com/PedroGM80/SmileRating/blob/main/docs/_site/assets/icogithub.png">](https://github.com/PedroGM80/SmileRating.git)
+[<img src="https://raw.githubusercontent.com/PedroGM80/SmileRating/main/docs/_site/assets/icogithub.png">](https://github.com/PedroGM80/SmileRating.git)
