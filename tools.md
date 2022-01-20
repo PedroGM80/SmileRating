@@ -1,4 +1,4 @@
-### Herramientas utilizadas
+# Herramientas utilizadas
 
 
 ## Herramientas de diseñó.
@@ -6,28 +6,28 @@
 - Krita par el diseño gráfico.
 - QtDesing para el desarrollo para la interface grafica.
 
-### Herramientas de edición de código.
+# Herramientas de edición de código.
 
 ## Visual studio code.
-# Librerias importadas en el archivo smilerating.py
-  -- from PySide6 import QtGui, QtWidgets,QtCore
-  -- from PySide6.QtCore import (QPoint, QPropertyAnimation, QRect,QSequentialAnimationGroup, QSize, Qt, Signal)
+### Librerias importadas en el archivo smilerating.py
+  - from PySide6 import QtGui, QtWidgets,QtCore
+  - from PySide6.QtCore import (QPoint, QPropertyAnimation, QRect,QSequentialAnimationGroup, QSize, Qt, Signal)
   
-  # Librerias importadas en el archivo smileRating_demo.py
-  -- import sys
-  -- from PySide6.QtWidgets import QApplication, QHBoxLayout, QMainWindow, QWidget
+  ### Librerias importadas en el archivo smileRating_demo.py
+  - import sys
+  - from PySide6.QtWidgets import QApplication, QHBoxLayout, QMainWindow, QWidget
 
  
  ## Pruebas unitarias.
- # Librerias importadas en el archivo test_smilerating.py.
+ ### Librerias importadas en el archivo test_smilerating.py.
   
-  -- import sys
-  -- import unittest
-  -- from PySide6.QtWidgets import QApplication, QWidget
+  - import sys
+  - import unittest
+  - from PySide6.QtWidgets import QApplication, QWidget
 
   
   ## Pruebas de interacción.
-  # Librerias importadas en el archivo test_smilerating_bot.py.
+  ### Librerias importadas en el archivo test_smilerating_bot.py.
   
   -- import unittest
   -- from PySide6 import QtWidgets 
